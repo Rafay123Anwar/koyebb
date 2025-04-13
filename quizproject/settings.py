@@ -17,7 +17,7 @@ load_dotenv()
 
 
 # settings.py
-GEMINI_API_KEY = "AIzaSyA9uutkgaL7o_IGLdBNFIsg2hnqEL0MBck"
+GEMINI_API_KEY = "AIzaSyDHRj15enPGr7I-QH0-Uyf8ZREmJqr6img"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
