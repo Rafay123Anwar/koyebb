@@ -360,14 +360,19 @@ def generate_quiz(request):
 
             # Define prompt for the Gemini API to generate a quiz
             prompt = f"""
-            You are an API that generates quizzes. Return only JSON.
-            Create a 10-question multiple choice quiz on the topic '{topic}'.
-            Each question should have:
-            - "question" (string)
-            - "options" (dictionary with keys A, B, C, D)
-            - "answer" (correct option as one of A, B, C, or D)
+            You are an intelligent quiz generator API. Return output **only** in valid JSON format.
 
-            Example Format:
+            Create a high-quality, well-structured 10-question multiple choice quiz on the topic: '{topic}'.
+
+            Each question must be clear, relevant to the topic, and non-repetitive. Ensure a good balance of difficulty (easy to moderate).
+
+            For every question, include:
+            - "question": A meaningful and topic-relevant question (as a string)
+            - "options": A dictionary of four answer choices labeled A, B, C, and D
+            - "answer": The correct answer (one of A, B, C, or D)
+
+            Follow this exact format:
+
             {{
                 "topic": "{topic}",
                 "questions": [
@@ -384,7 +389,6 @@ def generate_quiz(request):
                 ]
             }}
             """
-
             # Generate quiz using Gemini API
             model = genai.GenerativeModel("models/gemini-1.5-pro")
             response = model.generate_content(prompt)
